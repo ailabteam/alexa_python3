@@ -4,7 +4,7 @@ returns a list of the top N sites.
 """
 
 import zipfile
-import cStringIO
+from io import StringIO
 from urllib import urlopen
 
 ALEXA_DATA_URL = 'http://s3.amazonaws.com/alexa-static/top-1m.csv.zip'
@@ -19,9 +19,9 @@ def alexa_etl():
     """
 
     f = urlopen(ALEXA_DATA_URL)
-    buf = cStringIO.StringIO(f.read())
+    buf = StringIO.StringIO(f.read())
     zfile = zipfile.ZipFile(buf)
-    buf = cStringIO.StringIO(zfile.read('top-1m.csv'))
+    buf = StringIO.StringIO(zfile.read('top-1m.csv'))
     for line in buf:
         (rank, domain) = line.split(',')
         yield (int(rank), domain.strip())
