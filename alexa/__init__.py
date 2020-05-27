@@ -5,7 +5,7 @@ returns a list of the top N sites.
 
 import zipfile
 from io import StringIO
-from urllib import urlopen
+from urllib.request import urlopen
 
 ALEXA_DATA_URL = 'http://s3.amazonaws.com/alexa-static/top-1m.csv.zip'
 
