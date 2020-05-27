@@ -29,7 +29,7 @@ def alexa_etl():
 
 def top_list(num=100):
     a = alexa_etl()
-    return [a.next() for x in xrange(num)]
+    return [a.next() for x in range(num)]
 
 
 if __name__ == "__main__":
